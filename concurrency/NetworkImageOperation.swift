@@ -28,7 +28,9 @@
 
 import Foundation
 import UIKit
-final class NetworkImageOperation: AsyncOperation {
+
+final class NetworkImageOperation: AsyncOperation, ImageDataProvider {
+  
   var image: UIImage?
   private let url: URL
   private let completion: ((Data?, URLResponse?, Error?) -> Void)?
@@ -59,6 +61,4 @@ final class NetworkImageOperation: AsyncOperation {
       self.image = UIImage(data: data)
       }.resume()
   }
-  
 }
-extension NetworkImageOperation: ImageDataProvider {}

@@ -36,9 +36,12 @@ class TiltShiftOperation: Operation {
   var outputImage: UIImage?
   var inputImage: UIImage?
   
+  init(image: UIImage? = nil) {
+    inputImage = image
+    super.init()
+  }
+  
   override func main() {
-//    let filter = TiltShiftFilter(image: inputImage!, radius:3)
-//    outputImage = UIImage(ciImage: filter!.inputImage!)
     let dependencyImage = dependencies
       .compactMap { ($0 as? ImageDataProvider)?.image }
       .first
@@ -46,12 +49,13 @@ class TiltShiftOperation: Operation {
       return
     }
   }
-  
-  init(image: UIImage? = nil) {
-    inputImage = image
-    super.init()
-  }
 }
+
+
 extension TiltShiftOperation: ImageDataProvider {
-  var image: UIImage? { return outputImage }
+  
+  var image: UIImage? {
+    return outputImage
+  }
+  
 }

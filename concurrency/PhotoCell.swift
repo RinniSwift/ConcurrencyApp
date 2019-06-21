@@ -37,12 +37,12 @@ final class PhotoCell: UITableViewCell {
     nasaImageView.image = image
   }
   
-  var isLoading: Bool{
-    get {return indicator.isAnimating}
+  var isLoading: Bool {
+    get { return indicator.isAnimating }
     set {
       if newValue {
         indicator.startAnimating()
-      } else{
+      } else {
         indicator.stopAnimating()
       }
     }
